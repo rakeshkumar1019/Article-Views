@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Update Article-Dashboard</title>
+    <style>
+      body{
+        padding: 0px;
+        margin: 0px;
+        background-color: #eef2f3f5;
+      }
+      nav{
+        box-shadow: 0px 0px 3px 0px gray;
+      }
+      footer {
+        text-align: center;
+        padding: 3px;
+        background-color: #192A56;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Article Views</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="/api/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+          <a class="nav-link " href="/api/dashboard/article/new">Create New </a>
+          <a class="nav-link " href="/api/dashboard/article/show/all/admin">Articles </a>
+
+        </div>
+      </div>
+      
+      <a class="btn btn-outline-dark my-2 my-sm-0" style="margin-left: 10px; padding: 5px 25px;" href="/api/signout" >Logout</a>
+
+    </nav>
+     <h5 style="text-align: center;font-family: monospace;">Update Article</h5>
+   <div class="container-fluid">
+    <form method="POST"  enctype="multipart/form-data" action="/api/dashboard/article/update">
+        <input type="text" name="_id" value="<%=article._id%>" hidden>
+        <input type="text" name="author" value="<%=article.author%>" hidden>
+
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault01">Title</label>
+            <input type="text" class="form-control" name="title"  value="<%= article.title %> " placeholder="Title" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault02">Preview</label>
+           <textarea class="form-control " name="preview"    placeholder="Enter Preview"><%= article.preview %></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">Content</label>
+           <textarea class="form-control " name="content"   placeholder="Enter Content"><%= article.content %> </textarea>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault04">Code</label>
+           <textarea class="form-control " name="code"  placeholder="Enter Code"><%= article.code %></textarea>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Embend Youtube By URL</label>
+            <input type="text" class="form-control" placeholder="Enter Youtube url" value="<%= article.video_URL %> " name="video_URL">
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Tag One</label>
+            <input type="text" class="form-control" value="<%= article.tag_one %> "  name="tag_one">
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Tag Two</label>
+            <input type="text" class="form-control" value="<%= article.tag_two %> "  name="tag_two">
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Tag Three</label>
+            <input type="text" class="form-control" value="<%= article.tag_three %> " name="tag_three">
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="upadteProfileImage">Choose Article Image</label>
+            <input type="file" class="form-control-file is-invalid  form-control-sm" value="<%= article.article_image %> " name="article_image" required >
+          </div>
+        <button class="btn btn-primary" type="submit">Update</button>
+        <a class="btn btn-primary" href="/api/dashboard/article/<%=article._id%>" >Preview</a>
+        
+      </form>
+   </div>
+      
+      
+
+   <footer>
+    <p>Article Views<br>
+      A Computer Science portal for geeks. It contains well written, well thought and well explained computer science and programming articles <br>
+    <a href="mailto:srakeshkumar1019@gmail.com">srakeshkumar1019@gmail.com</a></p>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</body>
+</html>
